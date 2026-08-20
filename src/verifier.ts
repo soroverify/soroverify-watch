@@ -5,7 +5,8 @@ export async function checkVerificationExists(wasmHash: string): Promise<boolean
   try {
     const response = await fetch(url);
     if (response.status === 200) {
-      return true;
+      const body = await response.json() as { status?: string };
+      return body.status === 'verified' || body.status === 'mismatch';
     }
     if (response.status === 404) {
       return false;
