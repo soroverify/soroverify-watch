@@ -15,7 +15,7 @@ describe('scheduler', () => {
 
   it('never exceeds RPC_CALLS_PER_TICK in a single tick', async () => {
     const rows = Array(15).fill(0).map((_, i) => ({
-      contract_id: \`C\${i}\`,
+      contract_id: `C${i}`,
       verified_wasm_hash: 'hash1',
       network: 'testnet',
       consecutive_failures: 0,
