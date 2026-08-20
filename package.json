@@ -1,0 +1,31 @@
+{
+  "name": "soroverify-watch",
+  "version": "1.0.0",
+  "description": "Continuous verification monitoring for Soroban contracts",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node --env-file=.env dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.1",
+    "@stellar/stellar-sdk": "^12.1.1",
+    "dotenv": "^16.4.5",
+    "fastify": "^5.0.0",
+    "pg": "^8.13.0",
+    "pino": "^9.4.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "@types/pg": "^8.11.10",
+    "@types/uuid": "^10.0.0",
+    "pino-pretty": "^11.2.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  }
+}
