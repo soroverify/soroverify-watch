@@ -26,7 +26,7 @@ describe('watch endpoint', () => {
       method: 'POST',
       url: '/watch',
       payload: {
-        contractId: 'CC32X7LXYW3L4X2G3XV6I63P54H5F572C6J7T6Z6R7N23Q4P5Q4Z3Q2',
+        contractId: 'CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABSC4',
         network: 'testnet'
       }
     });
@@ -59,7 +59,7 @@ describe('watch endpoint', () => {
       method: 'POST',
       url: '/watch',
       payload: {
-        contractId: 'CC32X7LXYW3L4X2G3XV6I63P54H5F572C6J7T6Z6R7N23Q4P5Q4Z3Q2',
+        contractId: 'CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABSC4',
         network: 'testnet'
       }
     });
