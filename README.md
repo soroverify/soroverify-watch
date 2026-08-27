@@ -1,3 +1,8 @@
+![soroverify-watch](assets/soroverify-watch.svg)
+
+[![CI](https://github.com/soroverify/soroverify-watch/actions/workflows/ci.yml/badge.svg)](https://github.com/soroverify/soroverify-watch/actions/workflows/ci.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 # Soroverify Watch
 
 Soroverify Watch is a monitoring service for Soroban contracts. It continuously polls contracts that have a known verification result, detecting when their deployed Wasm hash changes. When drift is detected, it publishes a signed record stating that the prior verification no longer applies.

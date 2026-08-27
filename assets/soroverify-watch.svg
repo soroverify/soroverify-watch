@@ -1,0 +1,30 @@
+<svg width="1280" height="320" viewBox="0 0 1280 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="watchbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E1065"></stop>
+      <stop offset="100%" stop-color="#DC2626"></stop>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="320" fill="url(#watchbg)"></rect>
+
+  <circle cx="180" cy="160" r="80" fill="none" stroke="#FCA5A5" stroke-width="8"></circle>
+
+  <circle cx="180" cy="160" r="12" fill="#FCA5A5"></circle>
+
+  <path d="M180 160 L230 120" stroke="#FCA5A5" stroke-width="6"></path>
+
+  <circle cx="180" cy="160" r="120" fill="none" stroke="#FCA5A5" stroke-dasharray="12 10" opacity="0.4"></circle>
+
+  <text x="350" y="135" fill="#FFF" font-family="Segoe UI, Arial" font-size="56" font-weight="700">
+        soroverify-watch
+  </text>
+
+  <text x="350" y="190" fill="#FCA5A5" font-family="Segoe UI, Arial" font-size="24">
+        Continuous Wasm Drift Monitoring
+  </text>
+
+  <text x="350" y="235" fill="#FECACA" font-family="monospace" font-size="18">
+        Detect • Monitor • Alert • Sign
+  </text>
+</svg>
