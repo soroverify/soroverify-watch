@@ -3,6 +3,7 @@ import { watchRoutes } from './watch';
 import { query } from './db';
 import { rpcBudget } from './budget';
 import { config } from './config';
+import { manageTokenMatches } from './manageToken';
 
 export const routes: FastifyPluginAsync = async (server) => {
   // POST /watch
@@ -11,7 +12,12 @@ export const routes: FastifyPluginAsync = async (server) => {
   // GET /watch/:contractId
   server.get<{ Params: { contractId: string } }>('/watch/:contractId', async (request, reply) => {
     const { contractId } = request.params;
-    const res = await query('SELECT * FROM watched_contracts WHERE contract_id = $1', [contractId]);
+    const res = await query(
+      `SELECT contract_id, verified_wasm_hash, network, first_seen_at, last_checked_at,
+              check_interval_seconds, consecutive_failures, status
+       FROM watched_contracts WHERE contract_id = $1`,
+      [contractId]
+    );
     if (res.rows.length === 0) {
       return reply.status(404).send({ error: 'Contract not found' });
     }
@@ -21,8 +27,25 @@ export const routes: FastifyPluginAsync = async (server) => {
   // DELETE /watch/:contractId
   server.delete<{ Params: { contractId: string } }>('/watch/:contractId', async (request, reply) => {
     const { contractId } = request.params;
-    const res = await query('UPDATE watched_contracts SET status = $1 WHERE contract_id = $2 RETURNING *', ['retired', contractId]);
+
+    const authHeader = request.headers.authorization;
+    const providedToken = authHeader?.startsWith('Bearer ') ? authHeader.slice('Bearer '.length).trim() : undefined;
+
+    const res = await query<{ manage_token_hash: string | null }>(
+      'SELECT manage_token_hash FROM watched_contracts WHERE contract_id = $1',
+      [contractId]
+    );
+
     if (res.rowCount === 0) {
+      return reply.status(404).send({ error: 'Contract not found' });
+    }
+
+    if (!providedToken || !manageTokenMatches(providedToken, res.rows[0].manage_token_hash)) {
+      return reply.status(403).send({ error: 'Forbidden' });
+    }
+
+    const updateRes = await query('UPDATE watched_contracts SET status = $1 WHERE contract_id = $2 RETURNING contract_id', ['retired', contractId]);
+    if (updateRes.rowCount === 0) {
       return reply.status(404).send({ error: 'Contract not found' });
     }
     return { success: true };
