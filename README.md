@@ -32,9 +32,9 @@ node --env-file=.env --dns-result-order=ipv4first dist/index.js
 
 ## API Endpoints
 
-- `POST /watch`: Start watching a contract. Requires `contractId` and `network`. A verification record must exist on the upstream verifier. Rate limited.
-- `GET /watch/:contractId`: Returns current monitoring status and intervals.
-- `DELETE /watch/:contractId`: Sets status to retired.
+- `POST /watch`: Start watching a contract. Requires `contractId` and `network`. A verification record must exist on the upstream verifier. Rate limited. On success, the response includes a one-time `manageToken`. Save it: it is required to retire the watch later and is never shown again.
+- `GET /watch/:contractId`: Returns current monitoring status and intervals. Public, unauthenticated.
+- `DELETE /watch/:contractId`: Sets status to retired. Requires the `manageToken` returned by the original `POST /watch` call, passed as `Authorization: Bearer <manageToken>`. Returns 403 if the token is missing or wrong, 404 if the contract was never watched.
 - `GET /drift/:wasmHash`: Returns signed drift records matching the previous Wasm hash.
 - `GET /drift/by-contract/:contractId`: Resolves the contract to a Wasm hash, then returns matching drift records.
 - `GET /stats`: Returns system statistics.
