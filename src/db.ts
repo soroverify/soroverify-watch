@@ -19,8 +19,13 @@ export async function initDb(): Promise<void> {
         last_checked_at TIMESTAMPTZ,
         check_interval_seconds INTEGER NOT NULL,
         consecutive_failures INTEGER NOT NULL DEFAULT 0,
-        status TEXT NOT NULL
+        status TEXT NOT NULL,
+        manage_token_hash TEXT
       );
+    `);
+
+    await client.query(`
+      ALTER TABLE watched_contracts ADD COLUMN IF NOT EXISTS manage_token_hash TEXT;
     `);
 
     await client.query(`
