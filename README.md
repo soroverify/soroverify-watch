@@ -45,3 +45,16 @@ Read endpoints allow CORS from any origin. Write endpoints do not.
 ## Operations and Architecture
 
 Refer to the documents in `docs/` for details on the architecture, operations, and threat model.
+
+## Maintainers
+
+| Name     | GitHub                                   |
+| -------- | ---------------------------------------- |
+| Hollujay | [@Hollujay](https://github.com/Hollujay) |
+| emarkees | [@emarkees](https://github.com/emarkees) |
+
+## Contributors
+
+<a href="https://github.com/soroverify/soroverify-watch/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=soroverify/soroverify-watch" />
+</a>
