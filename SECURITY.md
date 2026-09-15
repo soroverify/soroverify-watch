@@ -6,10 +6,7 @@ Only the current major version is supported with security updates.
 
 ## Reporting a Vulnerability
 
-There is **no dedicated security contact set up for this project yet**.
-
-Please do not open a public issue for a security vulnerability. Instead, report it privately via the GitHub Security Advisories tab
-(https://github.com/soroverify/soroverify-watch/security/advisories/new) so it reaches the maintainers without being public.
+Please do not open a public issue for a security vulnerability. Instead, report privately via GitHub's private vulnerability reporting (Security tab → Report a vulnerability), or contact the maintainer directly: GitHub @Hollujay, Telegram @hollujay21.
 
 We will acknowledge receipt of the report and provide an estimated timeline for resolution.
 
